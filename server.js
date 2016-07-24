@@ -32,8 +32,8 @@ app.all('/', function(req, res, next) {
  });
 
 app.get('/go', function(req, res){
-	var start_lat = req.body.latitude;
-	var start_long = req.body.longitude;
+	var start_lat = req.query['latitude'];
+	var start_long = req.query['longitude'];
 	var identifier = 0;
 	var r = 7000/111300;
 	for(var i = 0 ; i < 10; i++){
@@ -44,9 +44,9 @@ app.get('/go', function(req, res){
 		x = w * Math.cos(t);
 		y = w * Math.sin(t);
 		x_corrected = x / Math.cos(start_lat);
-		var newLat = start_lat + x_corrected;
-		var newLon = start_long + y;
-		boys_array.push([i+1,newLat, newLon]);
+		var newLat = parseFloat(start_lat) + x_corrected;
+		var newLon = parseFloat(start_long) + y;
+		boys_array.push([i+1,Math.abs(newLat), Math.abs(newLon)]);
 	}
 	
 	setTimeout(function () {

@@ -54,6 +54,8 @@ app.get('/go', function(req, res){
 		start(boys_array[j]);
 	}
 
+	res.send('Simulation started');
+
 });
 
 

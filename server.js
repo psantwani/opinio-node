@@ -54,7 +54,7 @@ app.get('/go', function(req, res){
 	}, 120*1000);
 
 		
-	var responseObj;
+	var responseObj = {};
 	for(var j = 0; j < boys_array.length; j++){
 		start(boys_array[j]);
 		responseObj[boys_array[j][0]] = "" + boys_array[j][1] + "," + boys_array[j][2] + "";

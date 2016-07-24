@@ -25,6 +25,12 @@ app.listen(port, function(){
 	console.log("Listening at port " + port);
 });
 
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
 app.get('/go', function(req, res){
 	var start_lat = req.body.latitude;
 	var start_long = req.body.longitude;

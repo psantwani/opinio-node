@@ -53,11 +53,13 @@ app.get('/go', function(req, res){
 		keepCalling = false;
 	}, 120*1000);
 
-			
+		
+	var responseObj;
 	for(var j = 0; j < boys_array.length; j++){
 		start(boys_array[j]);
+		responseObj[boys_array[j][0]] = "" + boys_array[j][1] + "," + boys_array[j][2] + "";
 		if(j == boys_array.length - 1){
-			res.send('Simulation started');
+			res.send(JSON.stringify({"response" : responseObj}));
 		}
 	}
 

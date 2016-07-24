@@ -28,8 +28,6 @@ app.listen(port, function(){
 app.get('/go', function(req, res){
 	var start_lat = req.body.latitude;
 	var start_long = req.body.longitude;
-	//var start_lat = 12.9248;
-	//var start_long = 77.6274;
 	var identifier = 0;
 	var r = 7000/111300;
 	for(var i = 0 ; i < 10; i++){
@@ -52,9 +50,10 @@ app.get('/go', function(req, res){
 			
 	for(var j = 0; j < boys_array.length; j++){
 		start(boys_array[j]);
+		if(j == boys_array.length - 1){
+			res.send('Simulation started');
+		}
 	}
-
-	res.send('Simulation started');
 
 });
 

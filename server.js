@@ -59,7 +59,7 @@ app.get('/go', function(req, res){
 		start(boys_array[j]);
 		responseObj[boys_array[j][0]] = "" + boys_array[j][1] + "," + boys_array[j][2] + "";
 		if(j == boys_array.length - 1){
-			res.send({"response" : responseObj});
+			res.jsonp({"response" : responseObj});
 		}
 	}
 
